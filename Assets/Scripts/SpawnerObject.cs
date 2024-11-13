@@ -59,7 +59,6 @@ public class SpawnerObject<T> : MonoBehaviour where T : MonoBehaviour
     public virtual T Create(Vector2 vector2)
     {
         T spawnObject = Instantiate(_prefab, vector2, transform.rotation);
-
         return spawnObject;
     }
 
@@ -80,11 +79,11 @@ public class SpawnerObject<T> : MonoBehaviour where T : MonoBehaviour
 
     private IEnumerator SpawnWithDelay()
     {
-        float delayOnSpawn = Random.Range(_minDelayOnSpawn, _maxDelayOnSpawn);
-        WaitForSeconds waitOnSpawn = new WaitForSeconds(delayOnSpawn);
-
         while (true)
         {
+            float delayOnSpawn = Random.Range(_minDelayOnSpawn, _maxDelayOnSpawn);
+            WaitForSeconds waitOnSpawn = new WaitForSeconds(delayOnSpawn);
+
             if (_activeObjects.Count < _poolMaxSize)
                 _objectPool.Get();
 

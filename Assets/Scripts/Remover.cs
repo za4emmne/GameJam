@@ -10,7 +10,7 @@ public class Remover : MonoBehaviour
     {
         if((collision.TryGetComponent<Fence>(out Fence fence)))
         {
-            _creator.OnRelease(fence);
+            _creator.Release(fence);
         }
     }
 }
