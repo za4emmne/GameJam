@@ -72,6 +72,18 @@ public class SpawnerObject<T> : MonoBehaviour where T : MonoBehaviour
         _objectPool.Release(spawnObject);
     }
 
+    public virtual void Reset()
+    {
+        _objectPool.Clear();
+
+        foreach (T obj in _activeObjects)
+        {
+            Destroy(obj.gameObject);
+        }
+
+        _activeObjects.Clear();
+    }
+
     protected Vector2 GetRandomPosition()
     {
         return new Vector2(transform.position.x, transform.position.y);

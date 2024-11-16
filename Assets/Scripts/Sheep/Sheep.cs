@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Sheep : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Vector2 _startPosition;
+    public event Action GameOver;
+
+    private void Start()
     {
-        
+        _startPosition = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Dead()
     {
-        
+        GameOver?.Invoke();
+    }
+
+    public void Reset()
+    {
+        transform.position = _startPosition;
     }
 }
